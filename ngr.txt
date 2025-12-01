@@ -10,3 +10,44 @@ go to jenkins: make new job: enter github url
 select trigger: Github hook
 open git repo setting, add webhook
 add forwarding url from ngrok as payload and include /github-webhook/
+
+email notification:
+https://myaccount.google.com/apppasswords
+gmail: security->app passwords
+select app, name:Jenkins-Demo
+click generate
+copy 16 digit app password
+
+open jenkins dashboard->manage jenkins-> mange plugins
+install email extension plugin
+
+jenkins:manage jenkins-> http://localhost:8080/configure
+
+SMTP server	smtp.gmail.com
+Use SMTP Authentication	✅
+User Name	your full Gmail address (e.g. you@gmail.com)
+Password	your Gmail App Password
+Use SSL	✅
+SMTP Port	465
+Default user e-mail suffix	@gmail.com (optional)
+
+Extended email notification:
+Field	Value
+SMTP server	smtp.gmail.com
+Default user e-mail suffix	@gmail.com (optional)
+Use SMTP Authentication	✅
+User Name	you@gmail.com
+Password	App password
+Use SSL	✅
+SMTP Port	465
+Default Content Type	text/html
+Default Subject	$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS
+Default Content	Build URL: $BUILD_URL<br>Status: $BUILD_STATUS
+select triggers advanced
+
+
+then test email notif, success? then apply and save
+
+jenkins: select job -> configure
+git->url
+post build action-> editable email notification
