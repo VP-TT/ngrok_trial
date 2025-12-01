@@ -1,0 +1,12 @@
+take authentication key from ngrok - basically login and take authToken
+in cmd:
+ngrok config add-authtoken <token>
+
+then in cmd:(use jenkins terminal)
+ngrok.exe http 8080
+
+
+go to jenkins: make new job: enter github url
+select trigger: Github hook
+open git repo setting, add webhook
+add forwarding url from ngrok as payload and include /github-webhook/
