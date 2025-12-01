@@ -1,4 +1,2 @@
 trial
-this is the check if notif is working
-plij work
-now this better work
+
